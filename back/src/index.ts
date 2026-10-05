@@ -1,5 +1,6 @@
 import express, {type Express, type Request, type Response} from 'express';
 import cors from 'cors';
+import pool from '../db/client';
 
 const app: Express = express();
 const port = 3000;
@@ -10,13 +11,11 @@ interface ApiResponse {
     excuse: string;
 }
 
-const excuses: string[] = ["I didn't know", "I was sleeping", "I wasn't there", "I missed the bus"];
-
-app.get('/excuse', (req : Request, res: Response) => {
-    const random = excuses[Math.floor(Math.random() * excuses.length)] as string;
+app.get('/excuse', async (req : Request, res: Response) => {
+    const random = await pool.query('SELECT * FROM excuses ORDER BY RANDOM() LIMIT 1');
 
     const jsonResponse: ApiResponse = {
-        excuse: random
+        excuse: random.rows[0].text
     };
     res.status(200).json(jsonResponse);
 });
