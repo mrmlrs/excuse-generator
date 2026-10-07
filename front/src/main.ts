@@ -1,3 +1,5 @@
+import './style.css'
+
 document.querySelector('#app')!.innerHTML = `
 <h1>Excuse Generator</h1>
 <button>Generate</button>
