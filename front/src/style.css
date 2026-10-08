@@ -45,3 +45,20 @@ button:hover {
 #generate-again-btn {
     display: none;
 }
+
+#excuse-image {
+    max-width: 400px;
+    max-height: 400px;
+    object-fit: contain;
+}
+
+#generated-excuse {
+    color: white;
+    font-size: 50px;
+    font-weight: bold;
+    font-family: var(--font-main);
+}
+
+#generate-again-btn {
+    margin-top: 20px;
+}
