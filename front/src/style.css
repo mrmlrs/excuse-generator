@@ -1,3 +1,9 @@
+:root {
+    --color-primary: brown;
+    --color-bg-button: antiquewhite;
+    --font-main: "Coral Pixels", serif;
+}
+
 body {
     background-image: url('spongebob.png');
     background-size: cover;
@@ -14,17 +20,24 @@ body {
 }
 
 h1 {
-    color: brown;
+    color: var(--color-primary);
+    font-family: var(--font-main);
     font-size: 150px;
-    text-shadow: 2px 2px 30px black;
 }
 
 button {
-    background-color: antiquewhite;
+    background-color: var(--color-bg-button);
     border-radius: 50px;
     color: black;
+    font-family: var(--font-main);
     padding: 50px;
     font-size: 50px;
+    transition: all 0.4s ease;
+}
+
+button:hover {
+    transform: scale(1.1);
+    background-color: lemonchiffon;
 }
 
 #excuse-image,
