@@ -15,15 +15,22 @@ async function getExcuse() {
   }
   const data: {excuse: string, image: string, sound: string} = await fetchResponse.json();
 
+  if (!data.image) {
+    document.querySelector<HTMLImageElement>('#excuse-image')!.style.display = 'none';
+  } else {
+    document.querySelector<HTMLImageElement>('#excuse-image')!.src = data.image;
+    document.querySelector<HTMLImageElement>('#excuse-image')!.style.display = 'block';
+  }
+
   document.querySelector('#generated-excuse')!.innerHTML = data.excuse;                       
-  document.querySelector<HTMLImageElement>('#excuse-image')!.src = data.image; 
   document.querySelector<HTMLHeadElement>('h1')!.style.display = 'none';
   document.querySelector<HTMLButtonElement>('#generate-btn')!.style.display = 'none';
   document.querySelector<HTMLParagraphElement>('#generated-excuse')!.style.display = 'block';
-  document.querySelector<HTMLImageElement>('#excuse-image')!.style.display = 'block';
   document.querySelector<HTMLButtonElement>('#generate-again-btn')!.style.display = 'block';
 
-  new Audio(data.sound).play();
+  if (data.sound) {
+    new Audio(data.sound).play();
+  }
 }
 
 document.querySelector('#generate-btn')!.addEventListener('click', async () => {

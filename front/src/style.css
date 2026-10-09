@@ -55,7 +55,7 @@ button:hover {
 
 #generated-excuse {
     color: white;
-    font-size: 80px;
+    font-size: 50px;
     font-family: var(--font-excuses);
     text-shadow: 2px 2px 9px black;
 }
