@@ -8,7 +8,7 @@ document.querySelector('#app')!.innerHTML = `
 <button id="generate-again-btn">Another one</button>
 `
 async function getExcuse() {
-  const fetchResponse = await fetch('http://localhost:3000/excuse');
+  const fetchResponse = await fetch(`${import.meta.env.VITE_API_URL}/excuse`);
 
   if (!fetchResponse.ok) {
     throw new Error(`HTTP error : ${fetchResponse.status}`);
