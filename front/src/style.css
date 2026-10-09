@@ -2,6 +2,7 @@
     --color-primary: brown;
     --color-bg-button: antiquewhite;
     --font-main: "Coral Pixels", serif;
+    --font-excuses: "Henny Penny", serif;
 }
 
 body {
@@ -54,9 +55,9 @@ button:hover {
 
 #generated-excuse {
     color: white;
-    font-size: 50px;
-    font-weight: bold;
-    font-family: var(--font-main);
+    font-size: 80px;
+    font-family: var(--font-excuses);
+    text-shadow: 2px 2px 9px black;
 }
 
 #generate-again-btn {
