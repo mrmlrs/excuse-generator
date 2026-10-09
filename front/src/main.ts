@@ -27,9 +27,19 @@ async function getExcuse() {
 }
 
 document.querySelector('#generate-btn')!.addEventListener('click', async () => {
-  await getExcuse();
+    try {
+      await getExcuse();
+    } catch (error) {
+      document.querySelector('#generated-excuse')!.innerHTML = 'Oops, something went wrong x(';
+      document.querySelector<HTMLParagraphElement>('#generated-excuse')!.style.display = 'block';
+    }
 });
 
 document.querySelector('#generate-again-btn')!.addEventListener('click', async () => {
-  await getExcuse();
+  try {
+    await getExcuse();
+  } catch (error) {
+    document.querySelector('#generated-excuse')!.innerHTML = 'Oops, something went wrong x(';
+    document.querySelector<HTMLParagraphElement>('#generated-excuse')!.style.display = 'block';
+  }
 });
