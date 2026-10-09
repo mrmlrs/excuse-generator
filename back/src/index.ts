@@ -1,11 +1,13 @@
 import express, {type Express, type Request, type Response} from 'express';
 import cors from 'cors';
-import pool from '../db/client';
+import pool from './db/client.js';
 
 const app: Express = express();
 const port = 3000;
 
-app.use(cors());
+app.use(cors({
+    origin: process.env.ALLOWED_ORIGIN
+}));
 
 interface ApiResponse {
     excuse: string;
