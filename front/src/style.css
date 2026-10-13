@@ -23,7 +23,7 @@ body {
 h1 {
     color: var(--color-primary);
     font-family: var(--font-main);
-    font-size: 150px;
+    font-size: 100px;
 }
 
 button {
@@ -54,7 +54,7 @@ button:hover {
 }
 
 #generated-excuse {
-    color: white;
+    color: brown;
     font-size: 50px;
     font-family: var(--font-excuses);
     text-shadow: 2px 2px 9px black;
