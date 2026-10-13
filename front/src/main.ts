@@ -22,31 +22,34 @@ async function getExcuse() {
     document.querySelector<HTMLImageElement>('#excuse-image')!.style.display = 'block';
   }
 
-  document.querySelector('#generated-excuse')!.innerHTML = data.excuse;                       
+  document.querySelector('#generated-excuse')!.textContent = data.excuse;                       
   document.querySelector<HTMLHeadElement>('h1')!.style.display = 'none';
   document.querySelector<HTMLButtonElement>('#generate-btn')!.style.display = 'none';
   document.querySelector<HTMLParagraphElement>('#generated-excuse')!.style.display = 'block';
   document.querySelector<HTMLButtonElement>('#generate-again-btn')!.style.display = 'block';
 
   if (data.sound) {
-    new Audio(data.sound).play();
+    new Audio(data.sound).play().catch(() => {});
   }
+}
+
+function handleError() {
+  document.querySelector('#generated-excuse')!.textContent = 'Oops, something went wrong x(';
+  document.querySelector<HTMLParagraphElement>('#generated-excuse')!.style.display = 'block';
 }
 
 document.querySelector('#generate-btn')!.addEventListener('click', async () => {
     try {
       await getExcuse();
     } catch (error) {
-      document.querySelector('#generated-excuse')!.innerHTML = 'Oops, something went wrong x(';
-      document.querySelector<HTMLParagraphElement>('#generated-excuse')!.style.display = 'block';
-    }
+      handleError();
+      }
 });
 
 document.querySelector('#generate-again-btn')!.addEventListener('click', async () => {
   try {
     await getExcuse();
   } catch (error) {
-    document.querySelector('#generated-excuse')!.innerHTML = 'Oops, something went wrong x(';
-    document.querySelector<HTMLParagraphElement>('#generated-excuse')!.style.display = 'block';
+    handleError();
   }
 });
