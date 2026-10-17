@@ -1,4 +1,3 @@
-import 'dotenv/config';
 import express, {type Express, type Request, type Response} from 'express';
 import cors from 'cors';
 import pool from './db/client.js';
@@ -27,6 +26,7 @@ app.get('/excuse', async (req : Request, res: Response) => {
         };
         res.status(200).json(jsonResponse);
     } catch (error) {
+        console.error(error);
         res.status(500).json({ error: 'Internal server error' });
     }
 });
